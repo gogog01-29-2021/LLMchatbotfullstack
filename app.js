@@ -86,17 +86,19 @@ app.use('*', (req, res) => {
 // 에러 핸들러
 app.use(errorHandler);
 
-// 서버 시작
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log('🚀=================================🚀');
-  console.log(`   SeoulTech Chat API Server       `);
-  console.log('🚀=================================🚀');
-  console.log(`🌐 API Server: http://localhost:${PORT}`);
-  console.log(`📚 API Docs: http://localhost:${PORT}/api-docs`);
-  console.log(`💊 Health Check: http://localhost:${PORT}/health`);
-  console.log(`📱 React App: http://localhost:3001`);
-  console.log('🚀=================================🚀');
-});
+// 서버 시작 (직접 실행된 경우에만)
+if (require.main === module) {
+  const PORT = process.env.PORT || 3000;
+  app.listen(PORT, () => {
+    console.log('🚀=================================🚀');
+    console.log(`   SeoulTech Chat API Server       `);
+    console.log('🚀=================================🚀');
+    console.log(`🌐 API Server: http://localhost:${PORT}`);
+    console.log(`📚 API Docs: http://localhost:${PORT}/api-docs`);
+    console.log(`💊 Health Check: http://localhost:${PORT}/health`);
+    console.log(`📱 React App: http://localhost:3001`);
+    console.log('🚀=================================🚀');
+  });
+}
 
 module.exports = app;
